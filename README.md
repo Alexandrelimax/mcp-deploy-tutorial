@@ -29,7 +29,13 @@ Verifique se o uv está instalado:
 ```bash
 uv --version
 ```
+## 📁 Crie um projeto
+Para iniciar um projeto com `uv` insira:
+```bash
+uv init mcp-server-demo
+cd mcp-server-demo
 
+```
 ## ⚙️ Instalar o FastMCP
 
 Adicione o `FastMCP` como dependência do seu projeto usando uv:
