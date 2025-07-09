@@ -334,3 +334,125 @@ Com isso, seu projeto:
 - É rápido, consistente e seguro.
 
 🚀 **MCP na nuvem, do jeito certo!**
+
+
+✅ **Usando o VS Code como cliente MCP**
+
+Depois de subir seu servidor MCP local ou em um serviço em nuvem, você pode **conectar o VS Code** como **cliente** usando o painel MCP.
+
+Assim, você testa suas ferramentas (`@mcp.tool`) direto no **chat do Copilot**, **Claude** ou qualquer extensão MCP compatível.
+
+---
+
+🔹 **Passo 1 — Abrir o painel MCP**
+
+No VS Code, pressione:
+    *Ctrl + Shift + P*
+
+E procure:
+    *MCP: Add Server*
+
+![mcp3](https://github.com/user-attachments/assets/77539394-a026-4ec2-b688-e34cd5307c18)
+
+---
+
+🔹 **Passo 2 — Escolher o tipo de servidor**
+
+O VS Code mostra **estas opções** para adicionar seu servidor MCP 👇
+
+---
+
+🔹 **Command (stdio)**  
+📌 Roda o MCP como um **processo local**, usando entrada/saída padrão (STDIO).  
+✔️ Ideal pra dev local e plugins que gerenciam o processo.  
+🗒️ Exemplo que aparecerá no settings.json: 
+```json
+{
+  "mcp.servers": {
+    "my-mcp": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "main.py"]
+    }
+  }
+}
+```
+
+---
+
+🔹 **HTTP (HTTP or Server-Sent Events)**  
+📌 Conecta a um servidor MCP exposto via HTTP/SSE.  
+✔️ Use se seu MCP roda com `transport="streamable-http"` (ou `http`).  
+🗒️ Exemplo URL: `http://127.0.0.1:8000/mcp/`.
+
+---
+
+🔹 **NPM Package**  
+📌 Instala um MCP distribuído como pacote **NPM** (Node.js).  
+✔️ Útil pra MCPs mantidos como bots/plugins em JavaScript/TypeScript.
+
+---
+
+🔹 **Pip Package**  
+📌 Instala um MCP direto do **PyPI** usando `pip`.  
+✔️ Útil se você publica seu MCP como lib Python.  
+
+---
+
+🔹 **Docker Image**  
+📌 Roda o MCP a partir de uma imagem Docker.  
+✔️ Ideal para produção ou se você disponibilizar um contêiner pré-pronto.  
+🗒️ Exemplo que aparecerá no settings.json: 
+```json
+{
+    "Perplexity": {
+      "type": "stdio",
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "-e", "PERPLEXITY_API_KEY", "mcp/perplexity-ask"],
+      "env": {
+        "PERPLEXITY_API_KEY": "${input:perplexity-key}"
+    }
+}
+```
+![mcp4](https://github.com/user-attachments/assets/cb37ba15-5612-4dbf-bc80-cbc06d0005a6)
+
+---
+
+🔹 **Passo 3 — Informar detalhes**
+
+- Para **stdio**, informe o comando:
+    uv run main.py
+  ou
+    fastmcp dev main.py
+
+- Para **HTTP**, informe a URL:
+    http://127.0.0.1:8000/mcp
+  
+![mcp5](https://github.com/user-attachments/assets/d368596d-01a5-45fe-8eee-53e9f6c3d4f8)
+
+---
+
+🔹 **Passo 4 — Dar nome ao servidor e verificar no painel**
+
+Dê um **nome amigável** pro servidor — ex: `Rick and Morty MCP`.
+
+![mcp6](https://github.com/user-attachments/assets/d34437ae-d31a-4d94-8b0c-11014ca8637d)
+
+Depois de adicionar, seu servidor vai aparecer na lista de MCPs disponíveis no **Settings > MCP** do VS Code.
+
+![mcp-edit](https://github.com/user-attachments/assets/27a70169-6f00-4163-8813-1a9b82ee30a2)
+
+---
+
+🔹 **Passo 5 — Testar**
+
+Abra o **Copilot Chat** ou outra ferramenta compatível dentro do VS Code.  
+Faça uma pergunta que chame sua `@mcp.tool` — ex:
+    "Traga os detalhes do personagem ID 5 da API Rick and Morty"
+
+O chat vai usar o seu **servidor MCP** como **ferramenta externa**.
+
+---
+
+### FIM
+
