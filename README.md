@@ -35,13 +35,16 @@ uv --version
 Adicione o `FastMCP` como dependência do seu projeto usando uv:
 
 ```bash
-uv add fastmcp
+uv add fastmcp httpx
 ```
 Ou, se preferir, instale diretamente:
 
 ```bash
-uv pip install fastmcp
+uv pip install fastmcp httpx
 ```
+🔍 OBS: Estamos adicionando e instalando o `httpx`, pois iremos usá-lo na demonstração.
+
+
 Verifique a versão instalada:
 
 ```bash
